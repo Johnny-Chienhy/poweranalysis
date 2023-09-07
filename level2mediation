@@ -1,0 +1,61 @@
+DATA:
+
+FILE = "data.dat";
+
+VARIABLE:
+
+NAMES = id school social_skills problem_behaviors academic_competence;
+
+LEVELS = (student 152 school 76);
+
+USEVARIABLES = social_skills problem_behaviors academic_competence;
+
+MODEL:
+
+! Intercepts
+
+social_skills ON;
+
+problem_behaviors ON;
+
+academic_competence ON;
+
+! Residual variances
+
+social_skills ~~ social_skills;
+
+problem_behaviors ~~ problem_behaviors;
+
+academic_competence ~~ academic_competence;
+
+! Covariances
+
+social_skills ~~ problem_behaviors;
+
+social_skills ~~ academic_competence;
+
+problem_behaviors ~~ academic_competence;
+
+! Level-1 effects
+
+social_skills ON school;
+
+problem_behaviors ON school;
+
+academic_competence ON school;
+
+! Level-2 effects
+
+! No or medium effects
+
+@f2 = 0;
+
+@f2 = 0.15;
+
+! Attrition
+
+DROP = student;
+
+! Replications
+
+N = 200;
