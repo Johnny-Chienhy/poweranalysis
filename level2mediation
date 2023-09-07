@@ -58,4 +58,4 @@ DROP = student;
 
 ! Replications
 
-N = 200;
+N = 1000;
